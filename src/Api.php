@@ -740,6 +740,30 @@ class Api
     }
 
     /**
+     * Use this method for your bot to leave a group, supergroup or channel
+     *
+     * <code>
+     * $params = [
+     *   'chat_id' => '',
+     * ];
+     * </code>
+     *
+     * @link https://core.telegram.org/bots/api#leavechat
+     *
+     * @param array    $params
+     *
+     * @var int|string $params ['chat_id']
+     *
+     * @return bool
+     */
+    public function leaveChat(array $params)
+    {
+        $response = $this->post('leaveChat', $params);
+
+        return $response->getDecodedBody()['result'] === true;
+    }
+
+    /**
      * Kick a user from a group or a supergroup.
      *
      * In the case of supergroups, the user will not be able to return to the group on their own using
